@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/cookie-test', function(req, res, next) {
-  res.render('cookie-test', { title: 'Express' });
+  res.render('cookie-test', { title: 'Ajax Cookie' });
 });
 
 router.get('/cookie-get', function(req, res, next) {

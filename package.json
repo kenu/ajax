@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon -e js,json,ejs,www ./bin/www"
+    "start": "PORT=4000 nodemon -e js,json,ejs,www ./bin/www"
   },
   "dependencies": {
     "axios": "^0.19.2",
