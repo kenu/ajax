@@ -11,11 +11,18 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+var whitelist = ['https://m.okdevtv.com', 'https://pc.okdevtv.com'];
 var corsOptions = {
-  origin: 'https://m.okdevtv.com',
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
   credentials: true,
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
+};
 
 app.use(cors(corsOptions));
 app.use(logger('dev'));
