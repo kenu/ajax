@@ -1,0 +1,3 @@
+# PORT=3000 npm start #api
+# PORT=4000 npm start #mobile
+# PORT=5000 npm start #desktop

@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon -e js,json,ejs,www ./bin/www"
+    "dev": "nodemon -e js,json,ejs,www ./bin/www",
+    "start": "pm2 ./bin/www"
   },
   "dependencies": {
     "axios": "^0.19.2",
