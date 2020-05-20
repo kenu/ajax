@@ -27,7 +27,7 @@
       function setCoo() {
         var xhr = new XMLHttpRequest();
         xhr.addEventListener('load', reqListener);
-        xhr.open('GET', 'http://localhost:3000/ajax/server', true);
+        xhr.open('GET', '/ajax/server', true);
         xhr.withCredentials = true;
         xhr.send(null);
       }
