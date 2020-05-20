@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Cookie Test <%= title %></p>
+    <button id="callBtn">get</button>
+    <div id="wrap">
+      <h3>List</h3>
+      <ul id="list"></ul>
+      <ul>
+        <li><a href="/cookie-test">cookie test</a></li>
+        <li><a href="/cookie-get">cookie get</a></li>
+      </ul>
+    </div>
+    <script>
+      function reqListener() {
+        const data = JSON.parse(this.responseText);
+        console.log(data);
+        const el = document.getElementById('list');
+        const keys = Object.keys(data.cookies);
+        keys.forEach((item) => {
+          el.innerHTML += `<li>${item}</li>`;
+        });
+      }
+      function setCoo() {
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', reqListener);
+        xhr.open('GET', 'http://localhost:3000/ajax/get', true);
+        xhr.withCredentials = true;
+        xhr.send(null);
+      }
+      function init() {
+        document.getElementById('callBtn').addEventListener('click', setCoo);
+      }
+      init();
+    </script>
+  </body>
+</html>
