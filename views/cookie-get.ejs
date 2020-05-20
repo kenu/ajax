@@ -29,7 +29,7 @@
       function setCoo() {
         var xhr = new XMLHttpRequest();
         xhr.addEventListener('load', reqListener);
-        xhr.open('GET', '/ajax/get', true);
+        xhr.open('GET', 'https://api.okdevtest.net/ajax/get', true);
         xhr.withCredentials = true;
         xhr.send(null);
       }
