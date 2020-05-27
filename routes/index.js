@@ -6,8 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/cookie-test', function(req, res, next) {
-  res.render('cookie-test', { title: 'Ajax Cookie' });
+router.get('/cookie-set', function(req, res, next) {
+  res.render('cookie-set', { title: 'Ajax Cookie' });
 });
 
 router.get('/cookie-get', function(req, res, next) {

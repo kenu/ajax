@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Cookie Set <%= title %></p>
+    <button id="getBtn">make through GET method</button>
+    <br>
+    <button id="postBtn">make through POST method</button>
+    <br>
+    <button id="updateBtn">make through UPDATE method</button>
+    <br>
+    <button id="deleteBtn">make through DELETE method</button>
+    <br>
+    <div id="wrap">
+      <h3>List</h3>
+      <ul id="list"></ul>
+      <ul>
+        <li><a href="/cookie-set">cookie set</a></li>
+        <li><a href="/cookie-get">cookie get</a></li>
+      </ul>
+    </div>
+    <script>
+      function reqListener() {
+        console.log(this.responseText);
+        const data = JSON.parse(this.responseText);
+        const el = document.getElementById('list');
+        const item = data.cookie;
+        el.innerHTML += `<li>${item}</li>`;
+      }
+      function get() {
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', reqListener);
+        xhr.open('GET', '/ajax/server', true);
+        xhr.withCredentials = true;
+        xhr.send(null);
+      }
+      function post() {
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', reqListener);
+        xhr.open('POST', '/ajax/server', true);
+        xhr.withCredentials = true;
+        xhr.send(null);
+      }
+      function put() {
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', reqListener);
+        xhr.open('PUT', '/ajax/server', true);
+        xhr.withCredentials = true;
+        xhr.send(null);
+      }
+      function del() {
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', reqListener);
+        xhr.open('DELETE', '/ajax/server', true);
+        xhr.withCredentials = true;
+        xhr.send(null);
+      }
+      function init() {
+        document.getElementById('getBtn').addEventListener('click', get);
+        document.getElementById('postBtn').addEventListener('click', post);
+        document.getElementById('updateBtn').addEventListener('click', put);
+        document.getElementById('deleteBtn').addEventListener('click', del);
+      }
+      init();
+    </script>
+  </body>
+</html>

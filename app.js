@@ -11,19 +11,24 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-var whitelist = ['https://m.okdevtv.com', 'https://pc.okdevtv.com'];
+var whitelist = ['https://m.okdevtv.com', 'https://pc.okdevtv.com', 'http://cors.kr:4000'];
 var corsOptions = {
   origin: function (origin, callback) {
     if (!origin || whitelist.indexOf(origin) !== -1) {
       callback(null, true)
     } else {
-      callback(new Error('Not allowed by CORS'))
+      callback(new Error('Not allowed by CORS'));
     }
   },
   credentials: true,
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
+app.use(function (req, res, next) {
+  console.log(req.method);
+  console.log('Time:', new Date);
+  next();
+});
 app.use(cors(corsOptions));
 app.use(logger('dev'));
 app.use(express.json());
@@ -31,11 +36,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/', require('./routes/index'));
 app.use('/ajax', require('./routes/cookie'));
 
 // catch 404 and forward to error handler

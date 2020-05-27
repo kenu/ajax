@@ -6,13 +6,13 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Cookie Test <%= title %></p>
+    <p>Cookie Get <%= title %></p>
     <button id="callBtn">get</button>
     <div id="wrap">
       <h3>List</h3>
       <ul id="list"></ul>
       <ul>
-        <li><a href="/cookie-test">cookie test</a></li>
+        <li><a href="/cookie-set">cookie set</a></li>
         <li><a href="/cookie-get">cookie get</a></li>
       </ul>
     </div>
@@ -29,7 +29,7 @@
       function setCoo() {
         var xhr = new XMLHttpRequest();
         xhr.addEventListener('load', reqListener);
-        xhr.open('GET', 'https://api.okdevtest.net/ajax/get', true);
+        xhr.open('GET', '/ajax/get', true);
         xhr.withCredentials = true;
         xhr.send(null);
       }
