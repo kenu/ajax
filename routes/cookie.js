@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-// var sameSite = { sameSite: 'none', secure: true };
-var sameSite = {};
+var sameSite = { sameSite: 'none', secure: true };
+// var sameSite = {};
 
 router.all('/server', function (req, res, next) {
   var randomNumber = Math.random().toString();

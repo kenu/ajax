@@ -24,6 +24,8 @@
       </ul>
     </div>
     <script>
+      var apiBase = 'https://api.okdevtest.net';
+
       function reqListener() {
         console.log(this.responseText);
         const data = JSON.parse(this.responseText);
@@ -34,28 +36,28 @@
       function get() {
         var xhr = new XMLHttpRequest();
         xhr.addEventListener('load', reqListener);
-        xhr.open('GET', '/ajax/server', true);
+        xhr.open('GET', `${apiBase}/ajax/server`, true);
         xhr.withCredentials = true;
         xhr.send(null);
       }
       function post() {
         var xhr = new XMLHttpRequest();
         xhr.addEventListener('load', reqListener);
-        xhr.open('POST', '/ajax/server', true);
+        xhr.open('POST', `${apiBase}/ajax/server`, true);
         xhr.withCredentials = true;
         xhr.send(null);
       }
       function put() {
         var xhr = new XMLHttpRequest();
         xhr.addEventListener('load', reqListener);
-        xhr.open('PUT', '/ajax/server', true);
+        xhr.open('PUT', `${apiBase}/ajax/server`, true);
         xhr.withCredentials = true;
         xhr.send(null);
       }
       function del() {
         var xhr = new XMLHttpRequest();
         xhr.addEventListener('load', reqListener);
-        xhr.open('DELETE', '/ajax/server', true);
+        xhr.open('DELETE', `${apiBase}/ajax/server`, true);
         xhr.withCredentials = true;
         xhr.send(null);
       }
