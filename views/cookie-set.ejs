@@ -17,6 +17,8 @@
     <button id="deleteBtn">make through DELETE method</button>
     <br>
     <hr>
+    <button id="preflightBtn">make preflight request</button>
+    <br>
     <div id="wrap">
       <h3>List</h3>
       <ul id="list"></ul>
@@ -63,11 +65,21 @@
         xhr.withCredentials = true;
         xhr.send(null);
       }
+      function preflight() {
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', reqListener);
+        xhr.open('POST', `${apiBase}/ajax/server`, true);
+        xhr.withCredentials = true;
+        xhr.setRequestHeader('Ping-Other', 'pingpong');
+        xhr.setRequestHeader('Content-Type', 'application/xml');
+        xhr.send(null);
+      }
       function init() {
         document.getElementById('getBtn').addEventListener('click', get);
         document.getElementById('postBtn').addEventListener('click', post);
         document.getElementById('updateBtn').addEventListener('click', put);
         document.getElementById('deleteBtn').addEventListener('click', del);
+        document.getElementById('preflightBtn').addEventListener('click', preflight);
       }
       init();
     </script>

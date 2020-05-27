@@ -25,8 +25,8 @@ var corsOptions = {
 };
 
 app.use(function (req, res, next) {
-  console.log(req.method);
-  console.log('Time:', new Date);
+  var headerNames = Object.keys(req.headers);
+  console.log(req.method, 'Time:', new Date, headerNames.join(', '));
   next();
 });
 app.use(cors(corsOptions));
