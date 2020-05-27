@@ -17,6 +17,8 @@
       </ul>
     </div>
     <script>
+      var apiBase = 'https://api.okdevtest.net';
+
       function reqListener() {
         const data = JSON.parse(this.responseText);
         console.log(data);
@@ -29,7 +31,7 @@
       function setCoo() {
         var xhr = new XMLHttpRequest();
         xhr.addEventListener('load', reqListener);
-        xhr.open('GET', '/ajax/get', true);
+        xhr.open('GET', `${apiBase}/ajax/get`, true);
         xhr.withCredentials = true;
         xhr.send(null);
       }
