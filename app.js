@@ -11,7 +11,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-var whitelist = ['https://m.okdevtv.com', 'https://pc.okdevtv.com', 'http://cors.kr:4000'];
+var whitelist = ['https://m.okdevtv.com', 'https://pc.okdevtv.com', 'https://gs.okdevi.net', 'http://cors.kr:4000'];
 var corsOptions = {
   origin: function (origin, callback) {
     if (!origin || whitelist.indexOf(origin) !== -1) {
