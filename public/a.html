@@ -7,5 +7,10 @@
   </head>
   <body>
     <h2>page A</h2>
+    <script>
+      /*the iframe DOM object*/
+      var frame = document.getElementById('ac');
+      frame.contentWindow.postMessage({call:'sendValue', value: /*value*/}, /*frame domain url or '*'*/);
+    </script>
   </body>
 </html>
