@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CrossDomain</title>
+  <script>
+    window.onload = function () {
+      var buttonOut = document.getElementById('logout');
+      buttonOut.addEventListener('click', doLogout);
+    };
+
+    function doLogout() {
+      console.log('logout');
+      var targetOrigin = 'https://account.justdev.net';
+      document.getElementById('iframeAccounts')
+        .contentWindow.postMessage({ action: 'delete' }, targetOrigin);
+    }
+  </script>
+</head>
+
+<body>
+  <div id="status">status: <span id="status">off<span></div>
+  <button id="logout">logout</button>
+  <hr>
+  <iframe id="iframeAccounts" src="https://account.justdev.net/crosslogin.html"></iframe>
+</body>
+
+</html>
