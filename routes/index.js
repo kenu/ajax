@@ -18,4 +18,8 @@ router.get('/login', function(req, res, next) {
   res.render('login');
 });
 
+router.get('/cross', function(req, res, next) {
+  res.render('cross');
+});
+
 module.exports = router;
