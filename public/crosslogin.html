@@ -36,6 +36,12 @@
         action: action,
         success: success
       }
+
+      if (action === 'retrieve') {
+        response.token = getToken();
+        success = true;
+      }
+
       var res = JSON.stringify(response);
       event.source.postMessage(res, event.origin);
       log(res);
@@ -49,6 +55,10 @@
 
     function removeToken() {
       localStorage.removeItem('store');
+    }
+
+    function getToken() {
+      return localStorage.getItem('store');
     }
 
     function log(msg) {
