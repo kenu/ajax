@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <ul>
-      <li><a href="/cookie-set">cookie set</a></li>
-      <li><a href="/cookie-get">cookie get</a></li>
-    </ul>
-  </body>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <h1><%= title %></h1>
+  <p>Welcome to <%= title %></p>
+  <h2>Cookie</h2>
+  <ul>
+    <li><a href="/cookie-set">cookie set</a></li>
+    <li><a href="/cookie-get">cookie get</a></li>
+  </ul>
+  <h2>Storage</h2>
+  <ul>
+    <li><a href="https://fr.okdevtest.net/cross">https://fr.okdevtest.net/cross</a></li>
+    <li><a href="https://ds.okdevtv.com/cross">https://ds.okdevtv.com/cross</a></li>
+    <li>.</li>
+    <li><a href="https://gs.okdevi.net/login">https://gs.okdevi.net/login</a></li>
+  </ul>
+  * Notes on Safari 7+(OSX, iOS)<br>
+  * All cross-domain local storage access is disabled by default with Safari 7+.<br>
+  * <a
+    href="https://github.com/zendesk/cross-storage#compatibility">https://github.com/zendesk/cross-storage#compatibility</a>
+</body>
+
 </html>
