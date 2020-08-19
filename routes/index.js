@@ -14,4 +14,8 @@ router.get('/cookie-get', function(req, res, next) {
   res.render('cookie-get', { title: 'Express' });
 });
 
+router.get('/login', function(req, res, next) {
+  res.render('login');
+});
+
 module.exports = router;

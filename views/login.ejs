@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <script>
+    window.onload = function () {
+      var buttonIn = document.getElementById('login');
+      buttonIn.addEventListener('click', doLogin);
+
+      var buttonOut = document.getElementById('logout');
+      buttonOut.addEventListener('click', doLogout);
+    };
+    function doLogin() {
+      console.log('login');
+      var token = window.btoa('helloworld' + new Date());
+      var targetOrigin = 'https://account.justdev.net';
+      document.getElementById('iframeAccounts')
+        .contentWindow.postMessage({ refresh_token: token, action: 'store' }, targetOrigin);
+    }
+    function doLogout() {
+      console.log('logout');
+      var targetOrigin = 'https://account.justdev.net';
+      document.getElementById('iframeAccounts')
+        .contentWindow.postMessage({ action: 'delete' }, targetOrigin);
+    }
+  </script>
+</head>
+
+<body>
+  <button id="login">login</button>
+  <button id="logout">logout</button>
+  <hr>
+  <iframe id="iframeAccounts" src="https://account.justdev.net/crosslogin.html"></iframe>
+</body>
+
+</html>
