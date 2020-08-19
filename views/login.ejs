@@ -15,7 +15,7 @@
     };
     function doLogin() {
       console.log('login');
-      var token = window.btoa('helloworld' + new Date());
+      var token = window.btoa('helloworld' + Date.now());
       var targetOrigin = 'https://account.justdev.net';
       document.getElementById('iframeAccounts')
         .contentWindow.postMessage({ refresh_token: token, action: 'store' }, targetOrigin);
