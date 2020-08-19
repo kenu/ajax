@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Account</title>
+</head>
+
+<body>
+  Account
+  <script>
+    window.addEventListener('message', receiveMessage, false);
+    storeToken('hello');
+
+    function receiveMessage(event) {
+      // check origin
+
+      // extract refresh_token
+      var refreshToken = (event.data) ? event.data : '';
+      // store token
+      var success = false;
+      if (refreshToken) {
+        storeToken(refreshToken);
+        success = true;
+      }
+
+      // call parent
+      event.source.postMessage(event.origin + '|' + success, event.origin);
+    }
+
+    function storeToken(token) {
+      var timestamp = Date.now();
+      var value = { 'refresh_token': token, 'timestamp': timestamp };
+      localStorage.setItem('store', JSON.stringify(value));
+    }
+
+    function removeToken() {
+      localStorage.removeItem('store');
+    }
+  </script>
+</body>
+
+</html>
