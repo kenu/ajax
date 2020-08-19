@@ -8,24 +8,37 @@
 
 <body>
   Account
+  <ul id="result"></ul>
   <script>
     window.addEventListener('message', receiveMessage, false);
-    storeToken('hello');
 
     function receiveMessage(event) {
       // check origin
 
       // extract refresh_token
-      var refreshToken = (event.data) ? event.data : '';
+      var action = (event.data) ? event.data.action : '';
+      var refreshToken = (event.data) ? event.data.refresh_token : '';
       // store token
       var success = false;
-      if (refreshToken) {
+      if (refreshToken && action === 'store') {
         storeToken(refreshToken);
         success = true;
       }
 
+      if (action === 'delete') {
+        removeToken();
+        success = true;
+      }
+
       // call parent
-      event.source.postMessage(event.origin + '|' + success, event.origin);
+      var response = {
+        host: event.origin,
+        action: action,
+        success: success
+      }
+      var res = JSON.stringify(response);
+      event.source.postMessage(res, event.origin);
+      log(res);
     }
 
     function storeToken(token) {
@@ -36,6 +49,13 @@
 
     function removeToken() {
       localStorage.removeItem('store');
+    }
+
+    function log(msg) {
+      var list = document.getElementById('result');
+      var el = document.createElement('li');
+      el.innerHTML = msg;
+      list.appendChild(el);
     }
   </script>
 </body>
