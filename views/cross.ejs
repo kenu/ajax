@@ -7,9 +7,31 @@
   <title>CrossDomain</title>
   <script>
     window.onload = function () {
+      window.addEventListener('message', loadTokenCallback, false);
+
       var buttonOut = document.getElementById('logout');
       buttonOut.addEventListener('click', doLogout);
+
+      loadToken();
     };
+
+    function loadToken() {
+      console.log('load token');
+      var targetOrigin = 'https://account.justdev.net';
+      document.getElementById('iframeAccounts')
+        .contentWindow.postMessage({ action: 'retrieve' }, targetOrigin);
+    }
+
+    function loadTokenCallback(event) {
+      if (event.data) {
+        var data = JSON.parse(event.data);
+        if (data) {
+          var token = (data.token) ? JSON.parse(data.token) : '';
+          var refreshToken = (token) ? token.refresh_token : 'off';
+          document.getElementById('status').innerHTML = refreshToken;
+        }
+      }
+    }
 
     function doLogout() {
       console.log('logout');
@@ -21,7 +43,7 @@
 </head>
 
 <body>
-  <div id="status">status: <span id="status">off<span></div>
+  <div>status: <span id="status">off<span></div>
   <button id="logout">logout</button>
   <hr>
   <iframe id="iframeAccounts" src="https://account.justdev.net/crosslogin.html"></iframe>
