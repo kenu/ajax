@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <h2>page A</h2>
+  <iframe name="ac" src="cors-child.html"></iframe>
+  <script>
+    /*the iframe DOM object*/
+    var frame = document.getElementById('ac');
+    frame.contentWindow.postMessage({ call: 'sendValue', value: 'value'}, /*frame domain url or '*'*/);
+  </script>
+</body>
+
+</html>

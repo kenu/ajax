@@ -10,7 +10,7 @@
     <script>
       window.addEventListener('message', function(event) {
         var origin = event.origin || event.originalEvent.origin; // For Chrome, the origin property is in the event.originalEvent object.
-        if (origin !== /*the container's domain url*/)
+        if (origin !== '/*the containers domain url*/')
           return;
         if (typeof event.data == 'object' && event.data.call=='sendValue') {
           // Do something with event.data.value;
