@@ -1,9 +1,18 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const someId = 'someId';
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch('https://okdevtv.com/hello.json');
+      const data = await response.json();
+      document.getElementById('result').innerHTML = data.data;
+    }
+    fetchData();
+  }, [someId]); // Or [] if effect doesn't need props or state
 
   return (
     <div className="App">
@@ -14,6 +23,9 @@ function App() {
           <button type="button" onClick={() => setCount((count) => count + 1)}>
             count is: {count}
           </button>
+        </p>
+        <p>
+          <code id="result">No Content</code>
         </p>
         <p>
           Edit <code>App.jsx</code> and save to test HMR updates.
@@ -39,7 +51,7 @@ function App() {
         </p>
       </header>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
