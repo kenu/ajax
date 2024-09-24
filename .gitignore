@@ -5,3 +5,4 @@ package-lock.json
 start.sh
 .env
 .env.local
+pnpm-lock.yaml

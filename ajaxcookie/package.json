@@ -7,16 +7,16 @@
     "start": "pm2 start ./bin/www"
   },
   "dependencies": {
-    "axios": "^0.21.1",
-    "cookie-parser": "~1.4.4",
+    "axios": "^1.7.7",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
-    "debug": "~2.6.9",
-    "ejs": "~2.6.1",
-    "express": "~4.17.1",
-    "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
+    "debug": "^4.3.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "http-errors": "^2.0.0",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^3.1.7"
   }
 }
